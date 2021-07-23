@@ -1,0 +1,5 @@
+Parish:sarvente:1
+Worship:sarvente:1
+Zavodila:ruv:1
+Gospel:sarvente-lucifer:1
+Casanova:selever:2

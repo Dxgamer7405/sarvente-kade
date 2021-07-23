@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="portraits.png">
+	<!-- Created with Adobe Animate version 20.0.0.17400 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="SarvSmile0000" x="1489" y="13" width="276" height="285"/>
+	<SubTexture name="bfPortEnter0000" x="11" y="682" width="406" height="240"/>
+</TextureAtlas>
