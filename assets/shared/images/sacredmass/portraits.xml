@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="portraits.png">
+	<!-- Created with Adobe Animate version 20.0.0.17400 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="SarvHappy0000" x="105" y="10" width="276" height="285"/>
+	<SubTexture name="SarvSad0000" x="422" y="11" width="276" height="285"/>
+	<SubTexture name="SarvUpset0000" x="790" y="8" width="281" height="287"/>
+	<SubTexture name="SarvAngery0000" x="1153" y="8" width="281" height="287"/>
+	<SubTexture name="SarvSmile0000" x="1489" y="13" width="276" height="285"/>
+	<SubTexture name="SarvDevil0000" x="1221" y="324" width="317" height="327"/>
+	
+	<SubTexture name="RuvNormal0000" x="45" y="371" width="337" height="282"/>
+	<SubTexture name="RuvBruh0000" x="409" y="371" width="337" height="282"/>
+	<SubTexture name="RuvAngery0000" x="785" y="369" width="337" height="282"/>
+
+	<SubTexture name="bfPortEnter0000" x="11" y="682" width="406" height="240"/>
+	<SubTexture name="bfPortHappy0000" x="439" y="670" width="402" height="249"/>
+	<SubTexture name="bfPortSad0000" x="235" y="928" width="340" height="262"/>
+
+	<SubTexture name="gfPortEnter0000" x="1420" y="673" width="365" height="305"/>
+	<SubTexture name="gfPortHappy0000" x="1035" y="661" width="354" height="316"/>
+
+	<SubTexture name="SelHappy0000" x="10" y="1200" width="270" height="305"/>
+	<SubTexture name="SelSmile0000" x="345" y="1200" width="270" height="305"/>
+	<SubTexture name="SelUpset0000" x="694" y="1200" width="270" height="305"/>
+	<SubTexture name="SelXD0000" x="1076" y="1200" width="270" height="305"/>
+	<SubTexture name="SelAngery0000" x="1459" y="1200" width="270" height="305"/>
+
+	<SubTexture name="RasNormal0000" x="6" y="1518" width="289" height="301"/>
+	<SubTexture name="RasBruh0000" x="334" y="1519" width="289" height="301"/>
+</TextureAtlas>

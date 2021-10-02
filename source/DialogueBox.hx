@@ -86,47 +86,11 @@ class DialogueBox extends FlxSpriteGroup
 
 				var face:FlxSprite = new FlxSprite(320, 170).loadGraphic(Paths.image('weeb/spiritFaceForward'));
 				face.setGraphicSize(Std.int(face.width * 6));
-			case 'parish':
-				hasDialog = true;
-				box.frames = Paths.getSparrowAtlas('speech_bubble_talking','shared');
-				box.animation.addByPrefix('normalOpen', 'Speech Bubble Normal Open', 24, false);
-				box.animation.addByIndices('normal', 'speech bubble normal', [4], "", 24);	
-				box.width = 200;
-				box.height = 200;
-				box.x = -100;
-				box.y = 375;
-			case 'worship':
+			default:
 				hasDialog = true;
 				box.frames = Paths.getSparrowAtlas('speech_bubble_talking','shared');
 				box.animation.addByPrefix('normalOpen', 'Speech Bubble Normal Open', 24, false);
 				box.animation.addByIndices('normal', 'speech bubble normal', [4], "", 24);
-				box.width = 200;
-				box.height = 200;
-				box.x = -100;
-				box.y = 375;	
-			case 'zavodila':
-				hasDialog = true;
-				box.frames = Paths.getSparrowAtlas('speech_bubble_talking','shared');
-				box.animation.addByPrefix('normalOpen', 'Speech Bubble Normal Open', 24, false);
-				box.animation.addByIndices('normal', 'speech bubble normal', [4], "", 24);	
-				box.width = 200;
-				box.height = 200;
-				box.x = -100;
-				box.y = 375;
-			case 'gospel':
-				hasDialog = true;
-				box.frames = Paths.getSparrowAtlas('speech_bubble_talking','shared');
-				box.animation.addByPrefix('normalOpen', 'Speech Bubble Normal Open', 24, false);
-				box.animation.addByIndices('normal', 'speech bubble normal', [4], "", 24);	
-				box.width = 200;
-				box.height = 200;
-				box.x = -100;
-				box.y = 375;
-			case 'casanova':
-				hasDialog = true;
-				box.frames = Paths.getSparrowAtlas('speech_bubble_talking','shared');
-				box.animation.addByPrefix('normalOpen', 'Speech Bubble Normal Open', 24, false);
-				box.animation.addByIndices('normal', 'speech bubble normal', [4], "", 24);	
 				box.width = 200;
 				box.height = 200;
 				box.x = -100;
@@ -233,6 +197,11 @@ class DialogueBox extends FlxSpriteGroup
 			portraitLeft.color = FlxColor.BLACK;
 			swagDialogue.color = FlxColor.WHITE;
 			dropText.color = FlxColor.BLACK;
+		}
+		else
+		{
+			swagDialogue.color = 0xFF41162D;
+			dropText.color = 0xFF800E72;
 		}
 
 		dropText.text = swagDialogue.text;

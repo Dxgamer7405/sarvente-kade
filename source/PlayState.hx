@@ -152,6 +152,7 @@ class PlayState extends MusicBeatState
 	private var iconP2:HealthIcon;
 	private var camHUD:FlxCamera;
 	private var camGame:FlxCamera;
+	public var brokenpillar:FlxSprite = new FlxSprite(-600, -200);
 
 	public static var offsetTesting:Bool = false;
 
@@ -885,21 +886,56 @@ class PlayState extends MusicBeatState
 			{
 				defaultCamZoom = 0.9;
 				curStage = 'okchurch';
-				var bg:FlxSprite = new FlxSprite(-600, -200).loadGraphic(Paths.image('sacredmass/churchthisisfine'));
+				var stageFront:FlxSprite = new FlxSprite(-600, -200).loadGraphic(Paths.image('sacredmass/zavodilashit/floor'));
+				stageFront.antialiasing = true;
+				stageFront.scrollFactor.set(0.9, 0.9);
+				stageFront.active = false;
+				add(stageFront);
+
+				var bg:FlxSprite = new FlxSprite(-600, -200).loadGraphic(Paths.image('sacredmass/zavodilashit/bg'));
 				bg.antialiasing = true;
 				bg.scrollFactor.set(0.9, 0.9);
 				bg.active = false;
-				add(bg);	
+				add(bg);
+
+				var pillars:FlxSprite = new FlxSprite(-600, -200).loadGraphic(Paths.image('sacredmass/zavodilashit/pillars'));
+				pillars.antialiasing = true;
+				pillars.scrollFactor.set(0.9, 0.9);
+				pillars.active = false;
+				add(pillars);
+
+				brokenpillar.loadGraphic(Paths.image('sacredmass/zavodilashit/pillarbroke'));
+				brokenpillar.antialiasing = true;
+				brokenpillar.scrollFactor.set(0.9, 0.9);
+				brokenpillar.active = false;
 			}
 			case 'gospel':
 			{
 				defaultCamZoom = 0.9;
 				curStage = 'spookychurch';
-				var bg:FlxSprite = new FlxSprite(-600, -200).loadGraphic(Paths.image('sacredmass/churchAAA'));
+				var bg:FlxSprite = new FlxSprite(-600, -200).loadGraphic(Paths.image('sacredmass/gospelshit/bg'));
 				bg.antialiasing = true;
 				bg.scrollFactor.set(0.9, 0.9);
 				bg.active = false;
 				add(bg);
+
+				var pillars:FlxSprite = new FlxSprite(60.15, 130.1).loadGraphic(Paths.image('sacredmass/gospelshit/circ1'));
+				pillars.antialiasing = true;
+				pillars.scrollFactor.set(0.9, 0.9);
+				pillars.active = false;
+				pillars.updateHitbox();
+				add(pillars);
+				
+				FlxTween.angle(pillars, 0, 180, 3);
+				
+				new FlxTimer().start(3, function(tmr:FlxTimer)
+				{
+					if(pillars.angle == 180)
+						FlxTween.angle(pillars, 0, 180, 3);
+					else
+						FlxTween.angle(pillars, 180, 359, 3);
+				}, 0);
+
 			}
 			case 'casanova':
 			{
@@ -910,6 +946,28 @@ class PlayState extends MusicBeatState
 				bg.scrollFactor.set(0.9, 0.9);
 				bg.active = false;
 				add(bg);
+			}
+			case 'tutorial-remix':
+			{
+				defaultCamZoom = 0.9;
+				curStage = 'nokia';
+				var bg:FlxSprite = new FlxSprite(-764, -672.35).loadGraphic(Paths.image('sacredmass/stageback'));
+				bg.antialiasing = true;
+				bg.scrollFactor.set(0.9, 0.9);
+				bg.active = false;
+				add(bg);
+				
+				var stageFront:FlxSprite = new FlxSprite(-764, 148.25).loadGraphic(Paths.image('sacredmass/stagefront'));
+				stageFront.antialiasing = true;
+				stageFront.scrollFactor.set(0.9, 0.9);
+				stageFront.active = false;
+				add(stageFront);
+
+				var stageCurtains:FlxSprite = new FlxSprite(-766.5, -672.35).loadGraphic(Paths.image('stagecurtains'));
+				stageCurtains.antialiasing = true;
+				stageCurtains.scrollFactor.set(1.3, 1.3);
+				stageCurtains.active = false;
+				add(stageCurtains);
 			}
 			default:
 			{
@@ -1048,12 +1106,9 @@ class PlayState extends MusicBeatState
 				dad.x -= 450;
 				dad.y += 500;
 			case 'okchurch':
-				gf.x -= 350;
-				gf.y += 500;
-				boyfriend.x -= 200;
-				boyfriend.y += 500;
-				dad.x -= 450;
-				dad.y += 500;			
+				gf.setPosition(13.2, 403.45);
+				boyfriend.setPosition(680.75, 836.35);
+				dad.setPosition(-291.45, 484.15);
 			case 'spookychurch':
 				gf.x -= 350;
 				gf.y += 500;
@@ -1076,6 +1131,10 @@ class PlayState extends MusicBeatState
 				boyfriend.y += 500;
 				dad.x -= 450;
 				dad.y += 500;
+			case 'nokia':
+				boyfriend.setPosition(612.2, -45.8);
+				gf.setPosition(245.95, -361.2);
+				
 		}
 
 		add(gf);
@@ -1083,6 +1142,8 @@ class PlayState extends MusicBeatState
 		// Shitty layering but whatev it works LOL
 		if (curStage == 'limo')
 			add(limo);
+		if (curStage == 'okchurch')
+			add(brokenpillar);
 
 		add(dad);
 		add(boyfriend);
@@ -2808,13 +2869,33 @@ class PlayState extends MusicBeatState
 						{
 							case 2:
 								dad.playAnim('singUP' + altAnim, true);
+								if (SONG.player2 == 'ruv')
+								{
+									gf.playAnim('scared');
+									FlxG.camera.shake(0.01, 0.1);
+								}
 							case 3:
 								dad.playAnim('singRIGHT' + altAnim, true);
+								if (SONG.player2 == 'ruv')
+								{
+									gf.playAnim('scared');
+									FlxG.camera.shake(0.01, 0.1);
+								}
 							case 1:
 								dad.playAnim('singDOWN' + altAnim, true);
+								if (SONG.player2 == 'ruv')
+								{
+									gf.playAnim('scared');
+									FlxG.camera.shake(0.01, 0.1);
+								}
 							case 0:
 								dad.playAnim('singLEFT' + altAnim, true);
-            }
+								if (SONG.player2 == 'ruv')
+								{
+									gf.playAnim('scared');
+									FlxG.camera.shake(0.01, 0.1);
+								}
+            			}
 	
 						#if windows
 						if (lua != null)
@@ -3008,6 +3089,7 @@ class PlayState extends MusicBeatState
 			}
 		}
 	}
+
 
 
 	var endingSong:Bool = false;
@@ -3878,6 +3960,12 @@ class PlayState extends MusicBeatState
 		if (!boyfriend.animation.curAnim.name.startsWith("sing"))
 		{
 			boyfriend.playAnim('idle');
+		}
+
+		if (curBeat == 60 && curSong == 'Tutorial-Remix')
+		{
+			boyfriend.playAnim('hey', true);
+			dad.playAnim('cheer', true);
 		}
 
 		if (curBeat % 8 == 7 && curSong == 'Bopeebo')
