@@ -35,7 +35,7 @@ class OutdatedSubState extends MusicBeatState
 		{
 			FlxG.openURL("https://github.com/KadeDev/Kade-Engine/releases/latest");
 		}
-		if (controls.BACK)
+		if (controls.BACK #if android || FlxG.android.justReleased.BACK #end)
 		{
 			leftState = true;
 			FlxG.switchState(new MainMenuState());
